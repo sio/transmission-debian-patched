@@ -1,7 +1,11 @@
+# BUILD TRANSMISSION PACKAGE FOR DEBIAN AFTER APPLYING PATCHES
+
 # Requires Docker 18.04 or newer and libseccomp 2.3.3 or newer - ON THE HOST
 # Compilation will fail with Qt *.png errors otherwise:
 # https://stackoverflow.com/a/52084936
 
+
+# Stage 1. Heavy build environment
 FROM debian:stable-slim AS build
 
 WORKDIR /build
@@ -28,6 +32,7 @@ USER 100001:100001
 COPY fdlimit.patch /build/
 RUN \
     apt-get source transmission && \
+    rm *.tar.xz *.dsc && \
     cd transmission-* && \
     quilt push -a ; \
     quilt import /build/fdlimit.patch && \
@@ -36,3 +41,12 @@ RUN \
         "Backported some patches to stable version of transmission" \
         && \
     debuild -us -uc
+
+
+# Stage 2. Publish artifacts to empty container
+FROM scratch
+COPY --from=build \
+    /build/*.deb \
+    /build/*.tar.xz \
+    /build/*.dsc \
+    /packages/

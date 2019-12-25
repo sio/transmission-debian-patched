@@ -28,4 +28,4 @@ clean: docker-clean
 
 .PHONY: docker-clean
 docker-clean:
-	-$(DOCKER) rm -t $(TAG)
+	-$(DOCKER) rmi $(TAG)
