@@ -1,10 +1,14 @@
-
 DOCKER?=docker
 TAG=transmission-fdlimit-patch
 
 
-pkg: build
+pkg: deps build
 	$(DOCKER) cp $(TAG):/packages/. pkg/
+
+
+.PHONY: deps
+deps:
+	$(DOCKER) --version
 
 
 .PHONY: build
