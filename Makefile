@@ -13,7 +13,7 @@ deps:
 
 .PHONY: build
 build:
-	$(DOCKER) build --rm -t $(TAG) .
+	$(DOCKER) build -t $(TAG) .
 
 
 .PHONY: run
