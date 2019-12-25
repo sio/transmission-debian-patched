@@ -1,4 +1,4 @@
-# Requires Docker 18.04 or newer.
+# Requires Docker 18.04 or newer and libseccomp 2.3.3 or newer - ON THE HOST
 # Compilation will fail with Qt *.png errors otherwise:
 # https://stackoverflow.com/a/52084936
 
@@ -11,7 +11,6 @@ RUN \
     apt-get update && \
     apt-get install -y \
         devscripts \
-        libseccomp-dev \
         quilt \
         software-properties-common \
         && \
