@@ -5,6 +5,7 @@ WORKDIR /build
 RUN apt-get update && \
     apt-get install -y \
         software-properties-common \
+        quilt \
         && \
     add-apt-repository --enable-source 'http://deb.debian.org/debian' && \
     apt-get update && \
@@ -18,6 +19,11 @@ ENV QUILT_DIFF_ARGS="-p ab --no-timestamps --no-index --color=auto"
 ENV QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index"
 ENV QUILT_COLORS="diff_hdr=1;32:diff_add=1;34:diff_rem=1;31:diff_hunk=1;33:diff_ctx=35:diff_cctx=33"
 
+COPY fdlimit.patch /build/
 RUN cd transmission-* && \
     mkdir -p debian/patches; \
-    find -type d
+    quilt push -a && \
+    quilt import /build/fdlimit.patch && \
+    quilt pop -a && \
+    DEBEMAIL="Vitaly Potyarkin <sio.wtf@gmail.com>" debchange --nmu && \
+    debuild -us -uc
