@@ -12,8 +12,8 @@ deps:
 
 
 .PHONY: build
-build:
-	$(DOCKER) build -t $(TAG) .
+build:  # https://stackoverflow.com/a/52084936
+	$(DOCKER) build --security-opt seccomp:unconfined -t $(TAG) .
 
 
 .PHONY: run
