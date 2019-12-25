@@ -22,6 +22,7 @@ ENV QUILT_COLORS="diff_hdr=1;32:diff_add=1;34:diff_rem=1;31:diff_hunk=1;33:diff_
 
 COPY fdlimit.patch /build/
 RUN cd transmission-* && \
+    pwd && \
     quilt push -a && \
     quilt import /build/fdlimit.patch && \
     quilt pop -a && \
