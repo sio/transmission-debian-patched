@@ -18,7 +18,7 @@ build:
 
 .PHONY: run
 run:
-	$(DOCKER) run --rm -t $(TAG)
+	$(DOCKER) run --rm -it $(TAG)
 
 
 .PHONY: clean
