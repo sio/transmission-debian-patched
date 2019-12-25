@@ -25,5 +25,7 @@ RUN cd transmission-* && \
     quilt push -a && \
     quilt import /build/fdlimit.patch && \
     quilt pop -a && \
-    DEBEMAIL="Vitaly Potyarkin <sio.wtf@gmail.com>" debchange --nmu && \
+    DEBEMAIL="Vitaly Potyarkin <sio.wtf@gmail.com>" debchange --nmu \
+        "Backported some patches to stable version of transmission" \
+        && \
     debuild -us -uc
