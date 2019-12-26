@@ -36,4 +36,4 @@ clean: docker-clean
 .PHONY: docker-clean
 docker-clean:
 	-$(DOCKER) rmi $(TAG)
-	-$(DOCKER) image prune -f --filter label=status=intermediate
+	-$(DOCKER) image prune -f --filter label=github=sio/transmission-debian-patched

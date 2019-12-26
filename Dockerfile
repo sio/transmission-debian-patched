@@ -7,7 +7,7 @@
 
 # Stage 1. Heavy build environment
 FROM debian:stable-slim AS build
-LABEL status=intermediate
+LABEL github=sio/transmission-debian-patched
 
 WORKDIR /build
 
@@ -46,6 +46,7 @@ RUN \
 
 # Stage 2. Publish artifacts to empty container
 FROM scratch
+LABEL github=sio/transmission-debian-patched
 COPY --from=build \
     /build/*.deb \
     /build/*.tar.xz \
