@@ -19,6 +19,7 @@ in the process.
 - Docker >= 18.04
 - libseccomp >= 2.3.3 (will fail with Qt \*.png build errors otherwise:
   <https://stackoverflow.com/a/52084936>)
+- Storage: 2GB (Docker image for build stage is ~1.4GB)
 
 
 ## License and copyright
