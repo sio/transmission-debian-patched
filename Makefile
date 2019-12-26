@@ -1,6 +1,10 @@
 DOCKER?=docker
 TAG=transmission-fdlimit-patch
 
+BUILD_ARTIFACTS=\
+	pkg \
+	.image-is-ready
+
 
 pkg: .image-is-ready | deps
 	$(DOCKER) cp $(TAG):/packages/. $@/
@@ -23,7 +27,7 @@ inspect:
 
 .PHONY: clean
 clean: docker-clean
-	-$(RM) -r pkg .image-is-ready
+	-$(RM) -r $(BUILD_ARTIFACTS)
 
 
 .PHONY: docker-clean
