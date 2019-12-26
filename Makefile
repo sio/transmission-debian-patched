@@ -1,5 +1,5 @@
 DOCKER?=docker
-TAG=transmission-fdlimit-patch
+TAG=transmission-patched
 
 BUILD_ARTIFACTS=\
 	pkg \

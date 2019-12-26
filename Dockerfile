@@ -29,13 +29,13 @@ ENV QUILT_REFRESH_ARGS="-p ab --no-timestamps --no-index"
 ENV QUILT_COLORS="diff_hdr=1;32:diff_add=1;34:diff_rem=1;31:diff_hunk=1;33:diff_ctx=35:diff_cctx=33"
 
 USER 100001:100001
-COPY fdlimit.patch /build/
+COPY *.patch /build/
 RUN \
     apt-get source transmission && \
     rm *.tar.xz *.dsc && \
     cd transmission-* && \
     quilt push -a ; \
-    quilt import /build/fdlimit.patch && \
+    quilt import /build/*.patch && \
     quilt pop -a && \
     DEBEMAIL="Vitaly Potyarkin <sio.wtf@gmail.com>" debchange --nmu \
         "Backported some patches to stable version of transmission" \
