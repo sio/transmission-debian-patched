@@ -11,14 +11,14 @@ WORKDIR /build
 RUN \
     chown 100001:100001 . && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install --no-install-recommends -y \
         devscripts \
         quilt \
         software-properties-common \
         && \
     add-apt-repository --enable-source 'http://deb.debian.org/debian' && \
     apt-get update && \
-    apt-get build-dep -y transmission && \
+    apt-get build-dep --no-install-recommends -y transmission && \
     apt-get clean
 
 ENV QUILT_PATCHES="debian/patches"
