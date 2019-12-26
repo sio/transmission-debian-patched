@@ -1,3 +1,7 @@
+# BUILD TRANSMISSION PACKAGE FOR DEBIAN AFTER APPLYING PATCHES
+# https://github.com/sio/transmission-debian-patched
+
+
 DOCKER?=docker
 TAG=transmission-patched
 

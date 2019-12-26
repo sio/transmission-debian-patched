@@ -1,8 +1,5 @@
 # BUILD TRANSMISSION PACKAGE FOR DEBIAN AFTER APPLYING PATCHES
-
-# Requires Docker 18.04 or newer and libseccomp 2.3.3 or newer - ON THE HOST
-# Compilation will fail with Qt *.png errors otherwise:
-# https://stackoverflow.com/a/52084936
+# https://github.com/sio/transmission-debian-patched
 
 
 # Stage 1. Heavy build environment
