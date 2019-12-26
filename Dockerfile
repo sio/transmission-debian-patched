@@ -45,7 +45,7 @@ RUN \
 
 
 # Stage 2. Publish artifacts to empty container
-FROM debian:stable-slim
+FROM scratch
 COPY --from=build \
     /build/*.deb \
     /build/*.tar.xz \
