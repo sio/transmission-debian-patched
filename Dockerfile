@@ -21,7 +21,8 @@ RUN \
         && \
     add-apt-repository --enable-source 'http://deb.debian.org/debian' && \
     apt-get update && \
-    apt-get build-dep -y transmission
+    apt-get build-dep -y transmission && \
+    apt-get clean
 
 ENV QUILT_PATCHES="debian/patches"
 ENV QUILT_PATCH_OPTS="--reject-format=unified"
