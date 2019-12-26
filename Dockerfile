@@ -7,6 +7,7 @@
 
 # Stage 1. Heavy build environment
 FROM debian:stable-slim AS build
+LABEL status=intermediate
 
 WORKDIR /build
 

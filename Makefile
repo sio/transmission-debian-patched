@@ -7,7 +7,9 @@ BUILD_ARTIFACTS=\
 
 
 pkg: .image-is-ready | deps
-	$(DOCKER) cp $(TAG):/packages/. $@/
+	IMAGE=$$($(DOCKER) create $(TAG)) && \
+	$(DOCKER) cp $$IMAGE:/packages/. $@/ && \
+	$(DOCKER) rm $$IMAGE
 
 
 .image-is-ready: Dockerfile $(wildcard *.patch)
@@ -33,3 +35,4 @@ clean: docker-clean
 .PHONY: docker-clean
 docker-clean:
 	-$(DOCKER) rmi $(TAG)
+	-$(DOCKER) image prune -f --filter label=status=intermediate
