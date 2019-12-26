@@ -3,11 +3,11 @@ TAG=transmission-fdlimit-patch
 
 
 pkg: .image-is-ready | deps
-	$(DOCKER) cp $(TAG):/packages/. pkg/
+	$(DOCKER) cp $(TAG):/packages/. $@/
 
 
 .image-is-ready: Dockerfile $(wildcard *.patch)
-	$(DOCKER) build -t $(TAG) .
+	$(DOCKER) build --rm -t $(TAG) .
 	touch $@
 
 
