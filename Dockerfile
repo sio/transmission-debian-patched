@@ -51,3 +51,4 @@ COPY --from=build \
     /build/*.tar.xz \
     /build/*.dsc \
     /packages/
+CMD ["There are no executables in this container"]
