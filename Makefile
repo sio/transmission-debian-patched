@@ -7,7 +7,7 @@ BUILD_ARTIFACTS=\
 	.image-is-ready
 
 
-pkg: .image-is-ready | check-deps
+pkg: | image check-deps
 	CONTAINER=$$($(DOCKER) create $(TAG)) && \
 	$(DOCKER) cp $$CONTAINER:/packages/. $@/ && \
 	$(DOCKER) rm $$CONTAINER
@@ -16,6 +16,10 @@ pkg: .image-is-ready | check-deps
 .image-is-ready: Dockerfile $(wildcard *.patch)
 	$(DOCKER) build --rm -t $(TAG) .
 	touch $@
+
+
+.PHONY: image
+image: .image-is-ready
 
 
 .PHONY: check-deps
