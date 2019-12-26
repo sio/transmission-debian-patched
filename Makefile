@@ -33,7 +33,7 @@ check-deps:
 
 .PHONY: inspect
 inspect:
-	$(DOCKER) run --rm -it $(TAG)
+	$(DOCKER) run --rm -it $(TAG) /bin/sh
 
 
 .PHONY: clean
