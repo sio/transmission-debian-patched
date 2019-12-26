@@ -1,15 +1,16 @@
 DOCKER?=docker
 TAG=transmission-patched
 
+
 BUILD_ARTIFACTS=\
 	pkg \
 	.image-is-ready
 
 
-pkg: .image-is-ready | deps
-	IMAGE=$$($(DOCKER) create $(TAG)) && \
-	$(DOCKER) cp $$IMAGE:/packages/. $@/ && \
-	$(DOCKER) rm $$IMAGE
+pkg: .image-is-ready | check-deps
+	CONTAINER=$$($(DOCKER) create $(TAG)) && \
+	$(DOCKER) cp $$CONTAINER:/packages/. $@/ && \
+	$(DOCKER) rm $$CONTAINER
 
 
 .image-is-ready: Dockerfile $(wildcard *.patch)
@@ -17,8 +18,8 @@ pkg: .image-is-ready | deps
 	touch $@
 
 
-.PHONY: deps
-deps:
+.PHONY: check-deps
+check-deps:
 	$(DOCKER) --version
 
 
