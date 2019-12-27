@@ -31,7 +31,7 @@ USER 100001:100001
 COPY *.patch /build/
 RUN \
     apt-get source transmission && \
-    rm *.tar.xz *.dsc && \
+    rm ./*.tar.xz ./*.dsc && \
     cd transmission-* && \
     quilt push -a ; \
     quilt import /build/*.patch && \
