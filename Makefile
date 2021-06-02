@@ -15,6 +15,7 @@ pkg: | image check-deps
 	CONTAINER=$$($(DOCKER) create $(TAG)) && \
 	$(DOCKER) cp $$CONTAINER:/packages/. $@/ && \
 	$(DOCKER) rm $$CONTAINER
+	cd $@; sha256sum * > checksums.sha256
 
 
 .image-is-ready: Dockerfile $(wildcard *.patch)
