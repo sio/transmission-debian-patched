@@ -3,7 +3,7 @@
 
 
 # Stage 1. Heavy build environment
-FROM debian:bullseye-slim AS build
+FROM ubuntu:18.04 AS build
 LABEL github=sio/transmission-debian-patched
 
 WORKDIR /build
@@ -31,6 +31,7 @@ USER 100001:100001
 COPY *.patch /build/
 RUN \
     apt-get source transmission && \
+    ls && \
     rm ./*.debian.tar.xz ./*.dsc && \
     cd transmission-* && \
     quilt push -a ; \
