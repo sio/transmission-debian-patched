@@ -8,6 +8,7 @@ LABEL github=sio/transmission-debian-patched
 
 WORKDIR /build
 
+ENV DEBIAN_FRONTEND=noninteractive
 RUN \
     chown 100001:100001 . && \
     apt-get update && \
