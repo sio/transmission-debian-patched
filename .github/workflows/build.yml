@@ -1,0 +1,17 @@
+---
+
+name: build-packages
+
+on:
+  - push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: make
+      - uses: actions/upload-artifact@v2
+        with:
+          name: transmission-packages
+          path: pgk/**
