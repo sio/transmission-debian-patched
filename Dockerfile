@@ -3,7 +3,7 @@
 
 
 # Stage 1. Heavy build environment
-FROM debian:stable-slim AS build
+FROM debian:10-slim AS build
 LABEL github=sio/transmission-debian-patched
 
 WORKDIR /build
