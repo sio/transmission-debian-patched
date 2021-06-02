@@ -16,3 +16,17 @@ jobs:
           name: transmission-packages
           path: pkg/
           if-no-files-found: error
+      - uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: pkg/*
+          fail_on_unmatched_files: yes
+          body: |
+            Packages with patched Transmission for Debian.
+
+            Packages are provided AS IS, without any warranties. You are
+            recommended to use the tools from this repo and build the packages
+            yourself.
+
