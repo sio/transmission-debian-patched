@@ -3,7 +3,7 @@
 
 
 # Stage 1. Heavy build environment
-FROM ubuntu:18.04 AS build
+FROM ubuntu:20.04 AS build
 LABEL github=sio/transmission-debian-patched
 
 WORKDIR /build
