@@ -14,6 +14,7 @@ RUN \
     apt-get install --no-install-recommends -y \
         devscripts \
         quilt \
+        fakeroot \
         software-properties-common \
         && \
     add-apt-repository --enable-source 'http://archive.ubuntu.com/ubuntu/' && \
