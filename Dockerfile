@@ -16,7 +16,7 @@ RUN \
         quilt \
         software-properties-common \
         && \
-    add-apt-repository --enable-source 'http://deb.debian.org/debian' && \
+    add-apt-repository --enable-source 'http://archive.ubuntu.com/ubuntu/' && \
     apt-get update && \
     apt-get build-dep --no-install-recommends -y transmission && \
     apt-get clean
